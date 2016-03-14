@@ -1,16 +1,19 @@
+var Entry = require('./journal.js').Entry;
+
 $(document).ready(function() {
 
-$('#new-entry').submit(function(event){
-  event.preventDefault();
-  var title = $('#title').val();
-  var text = $('#text').val();
-  var date = $('#date').val();
+  $('form#new-entry').submit(function(event){
+    event.preventDefault();
+    var title = $('input#title').val();
+    var text = $('input#text').val();
+    var date = $('input#date').val();
+    console.log(title);
+    console.log(text);
+    console.log(date);
 
-  var newEntry = new Entry(title, text, date);
-  newEntry.forEach(function(element) {
-    $('.entries').append("<strong>" + element.title + "</strong><br><em>" + element.date + "</em><br>" + element.bodyText);
+    var newEntry = new Entry(title, text, date);
+
+      $('.entries').append("<p><strong>" + newEntry.title + "</strong><br><em>" + newEntry.bodyText + "</em><br>" + newEntry.date + "</p>");
+
   });
-});
-
-
 });
